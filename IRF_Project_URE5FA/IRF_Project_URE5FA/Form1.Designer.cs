@@ -28,33 +28,190 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.components = new System.ComponentModel.Container();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.database1DataSet4 = new IRF_Project_URE5FA.Database1DataSet4();
+            this.energiaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.energiaTableAdapter = new IRF_Project_URE5FA.Database1DataSet4TableAdapters.EnergiaTableAdapter();
+            this.energiaIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kCALDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.telitettzsirsavDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.szenhidratDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cukorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.feherjeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.soDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.zsirDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.EtelTextBox = new System.Windows.Forms.TextBox();
+            this.EtelListbox = new System.Windows.Forms.ListBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.database1DataSet4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.energiaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // dataGridView1
             // 
-            this.button1.Location = new System.Drawing.Point(73, 47);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.energiaIDDataGridViewTextBoxColumn,
+            this.kCALDataGridViewTextBoxColumn,
+            this.telitettzsirsavDataGridViewTextBoxColumn,
+            this.szenhidratDataGridViewTextBoxColumn,
+            this.cukorDataGridViewTextBoxColumn,
+            this.feherjeDataGridViewTextBoxColumn,
+            this.soDataGridViewTextBoxColumn,
+            this.zsirDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.energiaBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(160, 2);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(1054, 398);
+            this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // database1DataSet4
+            // 
+            this.database1DataSet4.DataSetName = "Database1DataSet4";
+            this.database1DataSet4.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // energiaBindingSource
+            // 
+            this.energiaBindingSource.DataMember = "Energia";
+            this.energiaBindingSource.DataSource = this.database1DataSet4;
+            // 
+            // energiaTableAdapter
+            // 
+            this.energiaTableAdapter.ClearBeforeFill = true;
+            // 
+            // energiaIDDataGridViewTextBoxColumn
+            // 
+            this.energiaIDDataGridViewTextBoxColumn.DataPropertyName = "EnergiaID";
+            this.energiaIDDataGridViewTextBoxColumn.HeaderText = "EnergiaID";
+            this.energiaIDDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.energiaIDDataGridViewTextBoxColumn.Name = "energiaIDDataGridViewTextBoxColumn";
+            this.energiaIDDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // kCALDataGridViewTextBoxColumn
+            // 
+            this.kCALDataGridViewTextBoxColumn.DataPropertyName = "KCAL";
+            this.kCALDataGridViewTextBoxColumn.HeaderText = "KCAL";
+            this.kCALDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.kCALDataGridViewTextBoxColumn.Name = "kCALDataGridViewTextBoxColumn";
+            this.kCALDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // telitettzsirsavDataGridViewTextBoxColumn
+            // 
+            this.telitettzsirsavDataGridViewTextBoxColumn.DataPropertyName = "telitett_zsirsav";
+            this.telitettzsirsavDataGridViewTextBoxColumn.HeaderText = "telitett_zsirsav";
+            this.telitettzsirsavDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.telitettzsirsavDataGridViewTextBoxColumn.Name = "telitettzsirsavDataGridViewTextBoxColumn";
+            this.telitettzsirsavDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // szenhidratDataGridViewTextBoxColumn
+            // 
+            this.szenhidratDataGridViewTextBoxColumn.DataPropertyName = "szenhidrat";
+            this.szenhidratDataGridViewTextBoxColumn.HeaderText = "szenhidrat";
+            this.szenhidratDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.szenhidratDataGridViewTextBoxColumn.Name = "szenhidratDataGridViewTextBoxColumn";
+            this.szenhidratDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // cukorDataGridViewTextBoxColumn
+            // 
+            this.cukorDataGridViewTextBoxColumn.DataPropertyName = "cukor";
+            this.cukorDataGridViewTextBoxColumn.HeaderText = "cukor";
+            this.cukorDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.cukorDataGridViewTextBoxColumn.Name = "cukorDataGridViewTextBoxColumn";
+            this.cukorDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // feherjeDataGridViewTextBoxColumn
+            // 
+            this.feherjeDataGridViewTextBoxColumn.DataPropertyName = "feherje";
+            this.feherjeDataGridViewTextBoxColumn.HeaderText = "feherje";
+            this.feherjeDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.feherjeDataGridViewTextBoxColumn.Name = "feherjeDataGridViewTextBoxColumn";
+            this.feherjeDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // soDataGridViewTextBoxColumn
+            // 
+            this.soDataGridViewTextBoxColumn.DataPropertyName = "so";
+            this.soDataGridViewTextBoxColumn.HeaderText = "so";
+            this.soDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.soDataGridViewTextBoxColumn.Name = "soDataGridViewTextBoxColumn";
+            this.soDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // zsirDataGridViewTextBoxColumn
+            // 
+            this.zsirDataGridViewTextBoxColumn.DataPropertyName = "zsir";
+            this.zsirDataGridViewTextBoxColumn.HeaderText = "zsir";
+            this.zsirDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.zsirDataGridViewTextBoxColumn.Name = "zsirDataGridViewTextBoxColumn";
+            this.zsirDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(2, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(129, 17);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Írd be az étel nevét";
+            // 
+            // EtelTextBox
+            // 
+            this.EtelTextBox.Location = new System.Drawing.Point(5, 29);
+            this.EtelTextBox.Name = "EtelTextBox";
+            this.EtelTextBox.Size = new System.Drawing.Size(100, 22);
+            this.EtelTextBox.TabIndex = 3;
+            this.EtelTextBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // EtelListbox
+            // 
+            this.EtelListbox.FormattingEnabled = true;
+            this.EtelListbox.ItemHeight = 16;
+            this.EtelListbox.Location = new System.Drawing.Point(11, 66);
+            this.EtelListbox.Name = "EtelListbox";
+            this.EtelListbox.Size = new System.Drawing.Size(120, 228);
+            this.EtelListbox.TabIndex = 4;
+            this.EtelListbox.SelectedIndexChanged += new System.EventHandler(this.EtelListbox_SelectedIndexChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(1213, 730);
+            this.Controls.Add(this.EtelListbox);
+            this.Controls.Add(this.EtelTextBox);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.dataGridView1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.database1DataSet4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.energiaBindingSource)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private Database1DataSet4 database1DataSet4;
+        private System.Windows.Forms.BindingSource energiaBindingSource;
+        private Database1DataSet4TableAdapters.EnergiaTableAdapter energiaTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn energiaIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn kCALDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn telitettzsirsavDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn szenhidratDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cukorDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn feherjeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn soDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn zsirDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox EtelTextBox;
+        private System.Windows.Forms.ListBox EtelListbox;
     }
 }
 

@@ -1,0 +1,481 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Database1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Ember">
+          <Key>
+            <PropertyRef Name="EmberID" />
+          </Key>
+          <Property Name="EmberID" Type="int" Nullable="false" />
+          <Property Name="Nev" Type="nvarchar" MaxLength="50" />
+          <Property Name="Kor" Type="int" />
+          <Property Name="Suly_kg" Type="int" />
+          <Property Name="Magassag_cm" Type="int" />
+          <Property Name="Fiu" Type="bit" />
+        </EntityType>
+        <EntityType Name="EmberEtel">
+          <Key>
+            <PropertyRef Name="EmberEtelId" />
+          </Key>
+          <Property Name="EmberEtelId" Type="int" Nullable="false" />
+          <Property Name="EmberFK" Type="int" />
+          <Property Name="EtelFK" Type="int" />
+        </EntityType>
+        <EntityType Name="EmberMozgas">
+          <Key>
+            <PropertyRef Name="EmberMozgasId" />
+          </Key>
+          <Property Name="EmberMozgasId" Type="int" Nullable="false" />
+          <Property Name="EmberFK" Type="int" />
+          <Property Name="MozgasFK" Type="int" />
+        </EntityType>
+        <EntityType Name="Energia">
+          <Key>
+            <PropertyRef Name="EnergiaID" />
+          </Key>
+          <Property Name="EnergiaID" Type="int" Nullable="false" />
+          <Property Name="KCAL" Type="int" />
+          <Property Name="telitett_zsirsav" Type="int" />
+          <Property Name="szenhidrat" Type="int" />
+          <Property Name="cukor" Type="int" />
+          <Property Name="feherje" Type="int" />
+          <Property Name="so" Type="int" />
+          <Property Name="zsir" Type="int" />
+        </EntityType>
+        <EntityType Name="Etelek">
+          <Key>
+            <PropertyRef Name="EtelId" />
+          </Key>
+          <Property Name="EtelId" Type="int" Nullable="false" />
+          <Property Name="KategoriaFK" Type="int" />
+          <Property Name="EnergiaFK" Type="int" />
+          <Property Name="Nev" Type="nvarchar" MaxLength="50" />
+          <Property Name="Szarmazas" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ar" Type="int" />
+        </EntityType>
+        <EntityType Name="Kategoria">
+          <Key>
+            <PropertyRef Name="KategoriaID" />
+          </Key>
+          <Property Name="KategoriaID" Type="int" Nullable="false" />
+          <Property Name="Nev" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ellenorzott" Type="bit" />
+          <Property Name="Allergének" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Mozgas">
+          <Key>
+            <PropertyRef Name="MozgasID" />
+          </Key>
+          <Property Name="MozgasID" Type="int" Nullable="false" />
+          <Property Name="Nev" Type="nvarchar" MaxLength="50" />
+          <Property Name="Szabadteri" Type="bit" />
+          <Property Name="Egyenileg_vegezheto" Type="bit" />
+          <Property Name="Heti_ora" Type="int" />
+        </EntityType>
+        <Association Name="FK_Etelek_ToEnergia">
+          <End Role="Kategoria" Type="Self.Kategoria" Multiplicity="0..1" />
+          <End Role="Etelek" Type="Self.Etelek" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategoria">
+              <PropertyRef Name="KategoriaID" />
+            </Principal>
+            <Dependent Role="Etelek">
+              <PropertyRef Name="KategoriaFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Etelek_ToKategoria">
+          <End Role="Energia" Type="Self.Energia" Multiplicity="0..1" />
+          <End Role="Etelek" Type="Self.Etelek" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Energia">
+              <PropertyRef Name="EnergiaID" />
+            </Principal>
+            <Dependent Role="Etelek">
+              <PropertyRef Name="EnergiaFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_ToEmberE">
+          <End Role="Ember" Type="Self.Ember" Multiplicity="0..1" />
+          <End Role="EmberMozgas" Type="Self.EmberMozgas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ember">
+              <PropertyRef Name="EmberID" />
+            </Principal>
+            <Dependent Role="EmberMozgas">
+              <PropertyRef Name="EmberFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_ToEmberEt">
+          <End Role="Ember" Type="Self.Ember" Multiplicity="0..1" />
+          <End Role="EmberEtel" Type="Self.EmberEtel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ember">
+              <PropertyRef Name="EmberID" />
+            </Principal>
+            <Dependent Role="EmberEtel">
+              <PropertyRef Name="EmberFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_ToEmberM">
+          <End Role="Mozgas" Type="Self.Mozgas" Multiplicity="0..1" />
+          <End Role="EmberMozgas" Type="Self.EmberMozgas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mozgas">
+              <PropertyRef Name="MozgasID" />
+            </Principal>
+            <Dependent Role="EmberMozgas">
+              <PropertyRef Name="MozgasFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_ToEtelE">
+          <End Role="Etelek" Type="Self.Etelek" Multiplicity="0..1" />
+          <End Role="EmberEtel" Type="Self.EmberEtel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Etelek">
+              <PropertyRef Name="EtelId" />
+            </Principal>
+            <Dependent Role="EmberEtel">
+              <PropertyRef Name="EtelFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Database1ModelStoreContainer">
+          <EntitySet Name="Ember" EntityType="Self.Ember" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmberEtel" EntityType="Self.EmberEtel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmberMozgas" EntityType="Self.EmberMozgas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Energia" EntityType="Self.Energia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Etelek" EntityType="Self.Etelek" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kategoria" EntityType="Self.Kategoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mozgas" EntityType="Self.Mozgas" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Etelek_ToEnergia" Association="Self.FK_Etelek_ToEnergia">
+            <End Role="Kategoria" EntitySet="Kategoria" />
+            <End Role="Etelek" EntitySet="Etelek" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Etelek_ToKategoria" Association="Self.FK_Etelek_ToKategoria">
+            <End Role="Energia" EntitySet="Energia" />
+            <End Role="Etelek" EntitySet="Etelek" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_ToEmberE" Association="Self.FK_Table_ToEmberE">
+            <End Role="Ember" EntitySet="Ember" />
+            <End Role="EmberMozgas" EntitySet="EmberMozgas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_ToEmberEt" Association="Self.FK_Table_ToEmberEt">
+            <End Role="Ember" EntitySet="Ember" />
+            <End Role="EmberEtel" EntitySet="EmberEtel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_ToEmberM" Association="Self.FK_Table_ToEmberM">
+            <End Role="Mozgas" EntitySet="Mozgas" />
+            <End Role="EmberMozgas" EntitySet="EmberMozgas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_ToEtelE" Association="Self.FK_Table_ToEtelE">
+            <End Role="Etelek" EntitySet="Etelek" />
+            <End Role="EmberEtel" EntitySet="EmberEtel" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Database1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Ember">
+          <Key>
+            <PropertyRef Name="EmberID" />
+          </Key>
+          <Property Name="EmberID" Type="Int32" Nullable="false" />
+          <Property Name="Nev" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Kor" Type="Int32" />
+          <Property Name="Suly_kg" Type="Int32" />
+          <Property Name="Magassag_cm" Type="Int32" />
+          <Property Name="Fiu" Type="Boolean" />
+          <NavigationProperty Name="EmberMozgas" Relationship="Self.FK_Table_ToEmberE" FromRole="Ember" ToRole="EmberMozgas" />
+          <NavigationProperty Name="EmberEtel" Relationship="Self.FK_Table_ToEmberEt" FromRole="Ember" ToRole="EmberEtel" />
+        </EntityType>
+        <EntityType Name="EmberEtel">
+          <Key>
+            <PropertyRef Name="EmberEtelId" />
+          </Key>
+          <Property Name="EmberEtelId" Type="Int32" Nullable="false" />
+          <Property Name="EmberFK" Type="Int32" />
+          <Property Name="EtelFK" Type="Int32" />
+          <NavigationProperty Name="Ember" Relationship="Self.FK_Table_ToEmberEt" FromRole="EmberEtel" ToRole="Ember" />
+          <NavigationProperty Name="Etelek" Relationship="Self.FK_Table_ToEtelE" FromRole="EmberEtel" ToRole="Etelek" />
+        </EntityType>
+        <EntityType Name="EmberMozgas">
+          <Key>
+            <PropertyRef Name="EmberMozgasId" />
+          </Key>
+          <Property Name="EmberMozgasId" Type="Int32" Nullable="false" />
+          <Property Name="EmberFK" Type="Int32" />
+          <Property Name="MozgasFK" Type="Int32" />
+          <NavigationProperty Name="Ember" Relationship="Self.FK_Table_ToEmberE" FromRole="EmberMozgas" ToRole="Ember" />
+          <NavigationProperty Name="Mozgas" Relationship="Self.FK_Table_ToEmberM" FromRole="EmberMozgas" ToRole="Mozgas" />
+        </EntityType>
+        <EntityType Name="Energia">
+          <Key>
+            <PropertyRef Name="EnergiaID" />
+          </Key>
+          <Property Name="EnergiaID" Type="Int32" Nullable="false" />
+          <Property Name="KCAL" Type="Int32" />
+          <Property Name="telitett_zsirsav" Type="Int32" />
+          <Property Name="szenhidrat" Type="Int32" />
+          <Property Name="cukor" Type="Int32" />
+          <Property Name="feherje" Type="Int32" />
+          <Property Name="so" Type="Int32" />
+          <Property Name="zsir" Type="Int32" />
+          <NavigationProperty Name="Etelek" Relationship="Self.FK_Etelek_ToKategoria" FromRole="Energia" ToRole="Etelek" />
+        </EntityType>
+        <EntityType Name="Etelek">
+          <Key>
+            <PropertyRef Name="EtelId" />
+          </Key>
+          <Property Name="EtelId" Type="Int32" Nullable="false" />
+          <Property Name="KategoriaFK" Type="Int32" />
+          <Property Name="EnergiaFK" Type="Int32" />
+          <Property Name="Nev" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Szarmazas" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ar" Type="Int32" />
+          <NavigationProperty Name="EmberEtel" Relationship="Self.FK_Table_ToEtelE" FromRole="Etelek" ToRole="EmberEtel" />
+          <NavigationProperty Name="Energia" Relationship="Self.FK_Etelek_ToKategoria" FromRole="Etelek" ToRole="Energia" />
+          <NavigationProperty Name="Kategoria" Relationship="Self.FK_Etelek_ToEnergia" FromRole="Etelek" ToRole="Kategoria" />
+        </EntityType>
+        <EntityType Name="Kategoria">
+          <Key>
+            <PropertyRef Name="KategoriaID" />
+          </Key>
+          <Property Name="KategoriaID" Type="Int32" Nullable="false" />
+          <Property Name="Nev" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ellenorzott" Type="Boolean" />
+          <Property Name="Allergének" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Etelek" Relationship="Self.FK_Etelek_ToEnergia" FromRole="Kategoria" ToRole="Etelek" />
+        </EntityType>
+        <EntityType Name="Mozgas">
+          <Key>
+            <PropertyRef Name="MozgasID" />
+          </Key>
+          <Property Name="MozgasID" Type="Int32" Nullable="false" />
+          <Property Name="Nev" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Szabadteri" Type="Boolean" />
+          <Property Name="Egyenileg_vegezheto" Type="Boolean" />
+          <Property Name="Heti_ora" Type="Int32" />
+          <NavigationProperty Name="EmberMozgas" Relationship="Self.FK_Table_ToEmberM" FromRole="Mozgas" ToRole="EmberMozgas" />
+        </EntityType>
+        <Association Name="FK_Table_ToEmberE">
+          <End Role="Ember" Type="Self.Ember" Multiplicity="0..1" />
+          <End Role="EmberMozgas" Type="Self.EmberMozgas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ember">
+              <PropertyRef Name="EmberID" />
+            </Principal>
+            <Dependent Role="EmberMozgas">
+              <PropertyRef Name="EmberFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_ToEmberEt">
+          <End Role="Ember" Type="Self.Ember" Multiplicity="0..1" />
+          <End Role="EmberEtel" Type="Self.EmberEtel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ember">
+              <PropertyRef Name="EmberID" />
+            </Principal>
+            <Dependent Role="EmberEtel">
+              <PropertyRef Name="EmberFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_ToEtelE">
+          <End Role="Etelek" Type="Self.Etelek" Multiplicity="0..1" />
+          <End Role="EmberEtel" Type="Self.EmberEtel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Etelek">
+              <PropertyRef Name="EtelId" />
+            </Principal>
+            <Dependent Role="EmberEtel">
+              <PropertyRef Name="EtelFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_ToEmberM">
+          <End Role="Mozgas" Type="Self.Mozgas" Multiplicity="0..1" />
+          <End Role="EmberMozgas" Type="Self.EmberMozgas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mozgas">
+              <PropertyRef Name="MozgasID" />
+            </Principal>
+            <Dependent Role="EmberMozgas">
+              <PropertyRef Name="MozgasFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Etelek_ToKategoria">
+          <End Role="Energia" Type="Self.Energia" Multiplicity="0..1" />
+          <End Role="Etelek" Type="Self.Etelek" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Energia">
+              <PropertyRef Name="EnergiaID" />
+            </Principal>
+            <Dependent Role="Etelek">
+              <PropertyRef Name="EnergiaFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Etelek_ToEnergia">
+          <End Role="Kategoria" Type="Self.Kategoria" Multiplicity="0..1" />
+          <End Role="Etelek" Type="Self.Etelek" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategoria">
+              <PropertyRef Name="KategoriaID" />
+            </Principal>
+            <Dependent Role="Etelek">
+              <PropertyRef Name="KategoriaFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Database1Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Ember" EntityType="Self.Ember" />
+          <EntitySet Name="EmberEtel" EntityType="Self.EmberEtel" />
+          <EntitySet Name="EmberMozgas" EntityType="Self.EmberMozgas" />
+          <EntitySet Name="Energia" EntityType="Self.Energia" />
+          <EntitySet Name="Etelek" EntityType="Self.Etelek" />
+          <EntitySet Name="Kategoria" EntityType="Self.Kategoria" />
+          <EntitySet Name="Mozgas" EntityType="Self.Mozgas" />
+          <AssociationSet Name="FK_Table_ToEmberE" Association="Self.FK_Table_ToEmberE">
+            <End Role="Ember" EntitySet="Ember" />
+            <End Role="EmberMozgas" EntitySet="EmberMozgas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_ToEmberEt" Association="Self.FK_Table_ToEmberEt">
+            <End Role="Ember" EntitySet="Ember" />
+            <End Role="EmberEtel" EntitySet="EmberEtel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_ToEtelE" Association="Self.FK_Table_ToEtelE">
+            <End Role="Etelek" EntitySet="Etelek" />
+            <End Role="EmberEtel" EntitySet="EmberEtel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_ToEmberM" Association="Self.FK_Table_ToEmberM">
+            <End Role="Mozgas" EntitySet="Mozgas" />
+            <End Role="EmberMozgas" EntitySet="EmberMozgas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Etelek_ToKategoria" Association="Self.FK_Etelek_ToKategoria">
+            <End Role="Energia" EntitySet="Energia" />
+            <End Role="Etelek" EntitySet="Etelek" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Etelek_ToEnergia" Association="Self.FK_Etelek_ToEnergia">
+            <End Role="Kategoria" EntitySet="Kategoria" />
+            <End Role="Etelek" EntitySet="Etelek" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="Database1Entities">
+          <EntitySetMapping Name="Ember">
+            <EntityTypeMapping TypeName="Database1Model.Ember">
+              <MappingFragment StoreEntitySet="Ember">
+                <ScalarProperty Name="EmberID" ColumnName="EmberID" />
+                <ScalarProperty Name="Nev" ColumnName="Nev" />
+                <ScalarProperty Name="Kor" ColumnName="Kor" />
+                <ScalarProperty Name="Suly_kg" ColumnName="Suly_kg" />
+                <ScalarProperty Name="Magassag_cm" ColumnName="Magassag_cm" />
+                <ScalarProperty Name="Fiu" ColumnName="Fiu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmberEtel">
+            <EntityTypeMapping TypeName="Database1Model.EmberEtel">
+              <MappingFragment StoreEntitySet="EmberEtel">
+                <ScalarProperty Name="EmberEtelId" ColumnName="EmberEtelId" />
+                <ScalarProperty Name="EmberFK" ColumnName="EmberFK" />
+                <ScalarProperty Name="EtelFK" ColumnName="EtelFK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmberMozgas">
+            <EntityTypeMapping TypeName="Database1Model.EmberMozgas">
+              <MappingFragment StoreEntitySet="EmberMozgas">
+                <ScalarProperty Name="EmberMozgasId" ColumnName="EmberMozgasId" />
+                <ScalarProperty Name="EmberFK" ColumnName="EmberFK" />
+                <ScalarProperty Name="MozgasFK" ColumnName="MozgasFK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Energia">
+            <EntityTypeMapping TypeName="Database1Model.Energia">
+              <MappingFragment StoreEntitySet="Energia">
+                <ScalarProperty Name="EnergiaID" ColumnName="EnergiaID" />
+                <ScalarProperty Name="KCAL" ColumnName="KCAL" />
+                <ScalarProperty Name="telitett_zsirsav" ColumnName="telitett_zsirsav" />
+                <ScalarProperty Name="szenhidrat" ColumnName="szenhidrat" />
+                <ScalarProperty Name="cukor" ColumnName="cukor" />
+                <ScalarProperty Name="feherje" ColumnName="feherje" />
+                <ScalarProperty Name="so" ColumnName="so" />
+                <ScalarProperty Name="zsir" ColumnName="zsir" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Etelek">
+            <EntityTypeMapping TypeName="Database1Model.Etelek">
+              <MappingFragment StoreEntitySet="Etelek">
+                <ScalarProperty Name="EtelId" ColumnName="EtelId" />
+                <ScalarProperty Name="KategoriaFK" ColumnName="KategoriaFK" />
+                <ScalarProperty Name="EnergiaFK" ColumnName="EnergiaFK" />
+                <ScalarProperty Name="Nev" ColumnName="Nev" />
+                <ScalarProperty Name="Szarmazas" ColumnName="Szarmazas" />
+                <ScalarProperty Name="Ar" ColumnName="Ar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kategoria">
+            <EntityTypeMapping TypeName="Database1Model.Kategoria">
+              <MappingFragment StoreEntitySet="Kategoria">
+                <ScalarProperty Name="KategoriaID" ColumnName="KategoriaID" />
+                <ScalarProperty Name="Nev" ColumnName="Nev" />
+                <ScalarProperty Name="Ellenorzott" ColumnName="Ellenorzott" />
+                <ScalarProperty Name="Allergének" ColumnName="Allergének" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mozgas">
+            <EntityTypeMapping TypeName="Database1Model.Mozgas">
+              <MappingFragment StoreEntitySet="Mozgas">
+                <ScalarProperty Name="MozgasID" ColumnName="MozgasID" />
+                <ScalarProperty Name="Nev" ColumnName="Nev" />
+                <ScalarProperty Name="Szabadteri" ColumnName="Szabadteri" />
+                <ScalarProperty Name="Egyenileg_vegezheto" ColumnName="Egyenileg_vegezheto" />
+                <ScalarProperty Name="Heti_ora" ColumnName="Heti_ora" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
