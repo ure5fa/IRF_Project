@@ -110,11 +110,17 @@
     <Compile Include="Etelek.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="EnergiaAB.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="EnergiaAB.Designer.cs">
+      <DependentUpon>EnergiaAB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Diagramm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Diagramm.Designer.cs">
+      <DependentUpon>Diagramm.cs</DependentUpon>
     </Compile>
     <Compile Include="Kategoria.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -139,8 +145,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="EnergiaAB.resx">
+      <DependentUpon>EnergiaAB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Diagramm.resx">
+      <DependentUpon>Diagramm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

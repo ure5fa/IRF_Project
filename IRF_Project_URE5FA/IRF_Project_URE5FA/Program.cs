@@ -16,7 +16,7 @@ namespace IRF_Project_URE5FA
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new EnergiaAB());
         }
     }
 }

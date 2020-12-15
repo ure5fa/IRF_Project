@@ -11,10 +11,10 @@ using System.Windows.Forms;
 
 namespace IRF_Project_URE5FA
 {
-    public partial class Form1 : Form
+    public partial class EnergiaAB : Form
     {
         Database1Entities context = new Database1Entities();
-        public Form1()
+        public EnergiaAB()
         {
             InitializeComponent();
             EtelListbox.DisplayMember = "Nev";
@@ -27,7 +27,7 @@ namespace IRF_Project_URE5FA
             EtelListbox.DataSource = fog.ToList();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void EnergiaAB_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'database1DataSet4.Energia' table. You can move, or remove it, as needed.
             this.energiaTableAdapter.Fill(this.database1DataSet4.Energia);
@@ -95,6 +95,18 @@ namespace IRF_Project_URE5FA
                     sw.WriteLine();
                 }
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Diagramm f2 = new Diagramm();
+            f2.Show();
+            this.Hide();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
