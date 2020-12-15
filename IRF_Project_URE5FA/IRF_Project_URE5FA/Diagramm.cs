@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace IRF_Project_URE5FA
 {
@@ -27,6 +28,11 @@ namespace IRF_Project_URE5FA
             EnergiaAB f1 = new EnergiaAB();
             f1.Show();
             this.Hide();
+        }
+
+        private void chartRateData_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
