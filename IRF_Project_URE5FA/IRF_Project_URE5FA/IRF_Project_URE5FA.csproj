@@ -81,6 +81,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Database1DataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Database1DataSet10.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Database1DataSet10.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Database1DataSet11.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Database1DataSet11.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Database1DataSet2.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -116,6 +126,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Database1DataSet8.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Database1DataSet9.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Database1DataSet9.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Ember.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -138,11 +153,11 @@
     <Compile Include="EnergiaAB.Designer.cs">
       <DependentUpon>EnergiaAB.cs</DependentUpon>
     </Compile>
-    <Compile Include="Diagramm.cs">
+    <Compile Include="Form2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Diagramm.Designer.cs">
-      <DependentUpon>Diagramm.cs</DependentUpon>
+    <Compile Include="Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
     <Compile Include="Kategoria.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -170,8 +185,8 @@
     <EmbeddedResource Include="EnergiaAB.resx">
       <DependentUpon>EnergiaAB.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Diagramm.resx">
-      <DependentUpon>Diagramm.cs</DependentUpon>
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -203,6 +218,28 @@
     </None>
     <None Include="Database1DataSet1.xss">
       <DependentUpon>Database1DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Database1DataSet10.xsc">
+      <DependentUpon>Database1DataSet10.xsd</DependentUpon>
+    </None>
+    <None Include="Database1DataSet10.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Database1DataSet10.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Database1DataSet10.xss">
+      <DependentUpon>Database1DataSet10.xsd</DependentUpon>
+    </None>
+    <None Include="Database1DataSet11.xsc">
+      <DependentUpon>Database1DataSet11.xsd</DependentUpon>
+    </None>
+    <None Include="Database1DataSet11.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Database1DataSet11.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Database1DataSet11.xss">
+      <DependentUpon>Database1DataSet11.xsd</DependentUpon>
     </None>
     <None Include="Database1DataSet2.xsc">
       <DependentUpon>Database1DataSet2.xsd</DependentUpon>
@@ -284,6 +321,17 @@
     </None>
     <None Include="Database1DataSet8.xss">
       <DependentUpon>Database1DataSet8.xsd</DependentUpon>
+    </None>
+    <None Include="Database1DataSet9.xsc">
+      <DependentUpon>Database1DataSet9.xsd</DependentUpon>
+    </None>
+    <None Include="Database1DataSet9.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Database1DataSet9.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Database1DataSet9.xss">
+      <DependentUpon>Database1DataSet9.xsd</DependentUpon>
     </None>
     <None Include="Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>

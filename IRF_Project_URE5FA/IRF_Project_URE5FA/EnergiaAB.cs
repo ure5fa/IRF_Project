@@ -137,7 +137,7 @@ namespace IRF_Project_URE5FA
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Diagramm f2 = new Diagramm();
+            Form2 f2 = new Form2();
             f2.Show();
             this.Hide();
 
