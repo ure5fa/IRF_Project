@@ -30,9 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.database1DataSet4 = new IRF_Project_URE5FA.Database1DataSet4();
-            this.energiaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.energiaTableAdapter = new IRF_Project_URE5FA.Database1DataSet4TableAdapters.EnergiaTableAdapter();
             this.energiaIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kCALDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telitettzsirsavDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,12 +38,16 @@
             this.feherjeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.soDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.zsirDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.energiaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.database1DataSet4 = new IRF_Project_URE5FA.Database1DataSet4();
+            this.energiaTableAdapter = new IRF_Project_URE5FA.Database1DataSet4TableAdapters.EnergiaTableAdapter();
             this.label1 = new System.Windows.Forms.Label();
             this.EtelTextBox = new System.Windows.Forms.TextBox();
             this.EtelListbox = new System.Windows.Forms.ListBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.database1DataSet4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.energiaBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.database1DataSet4)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -70,20 +71,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(1054, 398);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // database1DataSet4
-            // 
-            this.database1DataSet4.DataSetName = "Database1DataSet4";
-            this.database1DataSet4.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // energiaBindingSource
-            // 
-            this.energiaBindingSource.DataMember = "Energia";
-            this.energiaBindingSource.DataSource = this.database1DataSet4;
-            // 
-            // energiaTableAdapter
-            // 
-            this.energiaTableAdapter.ClearBeforeFill = true;
             // 
             // energiaIDDataGridViewTextBoxColumn
             // 
@@ -149,10 +136,24 @@
             this.zsirDataGridViewTextBoxColumn.Name = "zsirDataGridViewTextBoxColumn";
             this.zsirDataGridViewTextBoxColumn.Width = 125;
             // 
+            // energiaBindingSource
+            // 
+            this.energiaBindingSource.DataMember = "Energia";
+            this.energiaBindingSource.DataSource = this.database1DataSet4;
+            // 
+            // database1DataSet4
+            // 
+            this.database1DataSet4.DataSetName = "Database1DataSet4";
+            this.database1DataSet4.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // energiaTableAdapter
+            // 
+            this.energiaTableAdapter.ClearBeforeFill = true;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(2, 9);
+            this.label1.Location = new System.Drawing.Point(12, 2);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(129, 17);
             this.label1.TabIndex = 2;
@@ -160,9 +161,9 @@
             // 
             // EtelTextBox
             // 
-            this.EtelTextBox.Location = new System.Drawing.Point(5, 29);
+            this.EtelTextBox.Location = new System.Drawing.Point(-1, 22);
             this.EtelTextBox.Name = "EtelTextBox";
-            this.EtelTextBox.Size = new System.Drawing.Size(100, 22);
+            this.EtelTextBox.Size = new System.Drawing.Size(155, 22);
             this.EtelTextBox.TabIndex = 3;
             this.EtelTextBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -170,17 +171,28 @@
             // 
             this.EtelListbox.FormattingEnabled = true;
             this.EtelListbox.ItemHeight = 16;
-            this.EtelListbox.Location = new System.Drawing.Point(11, 66);
+            this.EtelListbox.Location = new System.Drawing.Point(-1, 61);
             this.EtelListbox.Name = "EtelListbox";
-            this.EtelListbox.Size = new System.Drawing.Size(120, 228);
+            this.EtelListbox.Size = new System.Drawing.Size(155, 228);
             this.EtelListbox.TabIndex = 4;
             this.EtelListbox.SelectedIndexChanged += new System.EventHandler(this.EtelListbox_SelectedIndexChanged);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(-1, 377);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(155, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Fájlba írás";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1213, 730);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.EtelListbox);
             this.Controls.Add(this.EtelTextBox);
             this.Controls.Add(this.label1);
@@ -189,8 +201,8 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.database1DataSet4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.energiaBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.database1DataSet4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -212,6 +224,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox EtelTextBox;
         private System.Windows.Forms.ListBox EtelListbox;
+        private System.Windows.Forms.Button button1;
     }
 }
 

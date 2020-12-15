@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -59,6 +60,41 @@ namespace IRF_Project_URE5FA
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             Etellistazas();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+
+            sfd.InitialDirectory = Application.StartupPath;
+            sfd.Filter = "Comma Seperated Values (*.csv)|*.csv";
+            sfd.DefaultExt = "csv";
+            sfd.AddExtension = true;
+
+            if (sfd.ShowDialog() != DialogResult.OK) return;
+
+            using (StreamWriter sw = new StreamWriter(sfd.FileName, false, Encoding.UTF8))
+            {
+
+                foreach (var s in context.Energia)
+                {
+
+                    sw.Write(s.KCAL.ToString());
+                    sw.Write(";");
+                    sw.Write(s.telitett_zsirsav.ToString());
+                    sw.Write(";");
+                    sw.Write(s.szenhidrat.ToString());
+                    sw.Write(";");
+                    sw.Write(s.cukor.ToString());
+                    sw.Write(";");
+                    sw.Write(s.feherje.ToString());
+                    sw.Write(";");
+                    sw.Write(s.so.ToString());
+                    sw.Write(";");
+                    sw.Write(s.zsir.ToString());
+                    sw.WriteLine();
+                }
+            }
         }
     }
 }
