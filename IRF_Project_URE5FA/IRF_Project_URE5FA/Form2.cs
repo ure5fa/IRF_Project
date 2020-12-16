@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
@@ -89,6 +90,7 @@ namespace IRF_Project_URE5FA
 
         private void EmberTextBox_TextChanged(object sender, EventArgs e)
         {
+            this.Validate();
             Emberlistazas();
         }
 
@@ -127,6 +129,23 @@ namespace IRF_Project_URE5FA
                     sw.Write(s.Ar.ToString());
                     sw.WriteLine();
                 }
+            }
+        }
+
+        private void EmberTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            Regex r = new Regex("^[A-Za-z]{1,}(| [A-Za-z]{1,})$");
+            if (r.IsMatch(EmberTextBox.Text))
+            {
+                e.Cancel = false;
+                EmberTextBox.BackColor = Color.Green;
+                errorProvider1.SetError(EmberTextBox, "");
+            }
+            else
+            {
+                errorProvider1.SetError(EmberTextBox, "A név mező nem tartalmazhat számot!");
+                e.Cancel = true;
+                EmberTextBox.BackColor = Color.Red;
             }
         }
     }

@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
@@ -28,6 +29,7 @@ namespace IRF_Project_URE5FA
                       where x.Nev.Contains(EtelTextBox.Text)
                       select x;
             EtelListbox.DataSource = fog.ToList();
+
         }
 
        
@@ -54,6 +56,8 @@ namespace IRF_Project_URE5FA
                                x.zsir
                            };
             dataGridView1.DataSource = tartalom.ToList();
+
+           
 
             
 
@@ -97,7 +101,9 @@ namespace IRF_Project_URE5FA
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
+            this.Validate();
             Etellistazas();
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -146,6 +152,23 @@ namespace IRF_Project_URE5FA
         private void button3_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void EtelTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            Regex r = new Regex("^[A-Za-z]{1,}(| [A-Za-z]{1,})$");
+            if (r.IsMatch(EtelTextBox.Text))
+            {
+                e.Cancel = false;
+                EtelTextBox.BackColor = Color.Green;
+                errorProvider1.SetError(EtelTextBox, "");
+            }
+            else
+            {
+                errorProvider1.SetError(EtelTextBox, "A név mező nem tartalmazhat számot!");
+                e.Cancel = true;
+                EtelTextBox.BackColor = Color.Red;
+            }
         }
     }
 }
