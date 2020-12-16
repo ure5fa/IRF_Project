@@ -59,7 +59,7 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button1.BackColor = System.Drawing.Color.PaleTurquoise;
             this.button1.Location = new System.Drawing.Point(22, 173);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(155, 49);
@@ -126,22 +126,24 @@
             // 
             // BtnSubmit
             // 
+            this.BtnSubmit.BackColor = System.Drawing.Color.LawnGreen;
             this.BtnSubmit.Location = new System.Drawing.Point(383, 55);
             this.BtnSubmit.Name = "BtnSubmit";
             this.BtnSubmit.Size = new System.Drawing.Size(129, 55);
             this.BtnSubmit.TabIndex = 16;
             this.BtnSubmit.Text = "Megoldás elküldése";
-            this.BtnSubmit.UseVisualStyleBackColor = true;
+            this.BtnSubmit.UseVisualStyleBackColor = false;
             this.BtnSubmit.Click += new System.EventHandler(this.BtnSubmit_Click);
             // 
             // btnRefresh
             // 
+            this.btnRefresh.BackColor = System.Drawing.Color.SpringGreen;
             this.btnRefresh.Location = new System.Drawing.Point(383, 124);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(129, 49);
             this.btnRefresh.TabIndex = 18;
             this.btnRefresh.Text = "Új játék indítása";
-            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.UseVisualStyleBackColor = false;
             this.btnRefresh.Click += new System.EventHandler(this.button3_Click);
             // 
             // label2
@@ -178,6 +180,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(637, 239);
             this.Controls.Add(this.lblTime);
             this.Controls.Add(this.label2);
